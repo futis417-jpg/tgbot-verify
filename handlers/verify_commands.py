@@ -216,6 +216,7 @@ async def verify3_command(update: Update, context: ContextTypes.DEFAULT_TYPE, db
         await update.message.reply_text("扣除积分失败，请稍后重试。")
         return
 
+    # ... código anterior ...
     processing_msg = await update.message.reply_text(
         f"🎵 开始处理 Spotify Student 认证...\n"
         f"已扣除 {VERIFY_COST} 积分\n\n"
@@ -224,14 +225,14 @@ async def verify3_command(update: Update, context: ContextTypes.DEFAULT_TYPE, db
         "📤 正在提交文档..."
     )
 
-    # 使用信号量控制并发
+    # USO CORRECTO DE ESPACIOS:
     semaphore = get_verification_semaphore("spotify_student")
 
     try:
         async with semaphore:
-        verifier = SpotifyVerifier(verification_id)
+            verifier = SpotifyVerifier(verification_id)
             result = await asyncio.to_thread(verifier.verify)
-
+            
         db.add_verification(
             user_id,
             "spotify_student",
@@ -239,6 +240,7 @@ async def verify3_command(update: Update, context: ContextTypes.DEFAULT_TYPE, db
             "success" if result["success"] else "failed",
             str(result),
         )
+    # ... resto del código ...
 
         if result["success"]:
             result_msg = "✅ Spotify 学生认证成功！\n\n"
