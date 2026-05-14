@@ -31,6 +31,7 @@ class MySQLDatabase:
             'database': os.getenv('DB_NAME', 'sys'),
             'charset': 'utf8mb4',
             'autocommit': True,
+            'ssl': {'ca': ''}  # <--- ESTA ES LA LÍNEA MÁGICA
         }
         
         logger.info(f"MySQL 数据库初始化: {self.config['user']}@{self.config['host']}/{self.config['database']}")
