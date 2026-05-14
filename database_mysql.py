@@ -32,7 +32,7 @@ class MySQLDatabase:
             'charset': 'utf8mb4',
             'autocommit': True,
         }
-        }
+        
         logger.info(f"MySQL 数据库初始化: {self.config['user']}@{self.config['host']}/{self.config['database']}")
         self.init_database()
 
