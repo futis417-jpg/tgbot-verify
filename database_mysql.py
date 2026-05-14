@@ -28,7 +28,7 @@ class MySQLDatabase:
             'port': int(os.getenv('DB_PORT', 4000)),
             'user': os.getenv('DB_USER', '24VcNjS1xBzFJBC.root'),
             'password': os.getenv('DB_PASSWORD', 'ugufJ7HoRg5I1FE2'),
-            'database': os.getenv('DB_NAME', 'sys'),
+            'database': os.getenv('DB_NAME', 'test'),
             'charset': 'utf8mb4',
             'autocommit': True,
             'ssl': {'ca': ''}  # <--- ESTA ES LA LÍNEA MÁGICA
