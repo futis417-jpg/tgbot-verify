@@ -24,13 +24,14 @@ class MySQLDatabase:
         
         # 从环境变量读取配置（推荐）或使用默认值
         self.config = {
-            'host': os.getenv('MYSQL_HOST', 'localhost'),
-            'port': int(os.getenv('MYSQL_PORT', 3306)),
-            'user': os.getenv('MYSQL_USER', 'tgbot_user'),
-            'password': os.getenv('MYSQL_PASSWORD', 'your_password_here'),
-            'database': os.getenv('MYSQL_DATABASE', 'tgbot_verify'),
+            'host': os.getenv('DB_HOST', 'gateway01.eu-central-1.prod.aws.tidbcloud.com'),
+            'port': int(os.getenv('DB_PORT', 4000)),
+            'user': os.getenv('DB_USER', '24VcNjS1xBzFJBC.root'),
+            'password': os.getenv('DB_PASSWORD', 'ugufJ7HoRg5I1FE2'),
+            'database': os.getenv('DB_NAME', 'sys'),
             'charset': 'utf8mb4',
-            'autocommit': False,
+            'autocommit': True,
+        }
         }
         logger.info(f"MySQL 数据库初始化: {self.config['user']}@{self.config['host']}/{self.config['database']}")
         self.init_database()
